@@ -5,22 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="/shoppingmall/css/style.css/">
 <script src="/shoppingmall/js/jquery-1.11.0.min.js"></script>
-<script src="/shoppingmall/js/jquery.form.min.js"></script>
-<script src="/shoppingmall/mngr/productProcess/bookregist.js"></script>
-<meta charset="UTF-8">
+<script src="/shoppingmall/mngr/productProcess/booklist.js"></script>
 </head>
 <body>
 	<c:if test="${empty sessionScope.id}">
 		<meta http-equiv="Refresh"
-			content="0;url=/shoppingmall/mg/managerManin.do">
+			content="0;url=/shoppingmall/mg/managerMain.do">
 	</c:if>
 
 	<div id="listHeader">
 		<p>
 			등록된 상품 목록 (전체 상품:${count})
-			<button id="regist">책등록</button>
+			<button id="regist">책 등록</button>
 			<button id="bookMain">관리자 메인으로</button>
 	</div>
 	<div id="books">
@@ -45,39 +44,40 @@
 					<td align="center" width="70">등록일</td>
 					<td align="center" width="50">수정</td>
 					<td align="center" width="50">삭제</td>
-					</tr>
-					<c:set var="number" value="${0}"/>
-					<c:forEach var="book" items="${bookList}">
+				</tr>
+
+				<c:set var="number" value="${0}" />
+				<c:forEach var="book" items="${bookList}">
 					<tr>
-					<td align="center" width="50">
-					<c:set var="number" value="${number+1}"/>
-					<c:out value="${number}"/>
-					</td>
-					<td width="30">${book.getBook_kind()}</td>
-					<td width="100" align="left">
-						${book.getBook_title()}</td>
+						<td align="center" width="50"><c:set var="number"
+								value="${number+1}" /> <c:out value="${number}" /></td>
+						<td width="30">${book.getBook_kind()}</td>
+						<td width="100" align="left">${book.getBook_title()}</td>
 						<td width="50" align="right">${book.getBook_price()}</td>
-						<td width="50" align="right">
-						<c:if test="${book.getBook_count()==0}">
-							<font color="red">일시품절</font>
-						</c:if>
-						<c:if test="${book.getBook_count()>0}">
+						<td width="50" align="right"><c:if
+								test="${book.getBook_count()==0}">
+								<font color="red">일시품절</font>
+							</c:if> <c:if test="${book.getBook_count()>0}">
 							${book.getBook_count()}
-						</c:if>
-						</td>
+						</c:if></td>
 						<td width="70">${book.getAuthor()}</td>
 						<td width="70">${book.getPublishing_com()}</td>
 						<td width="50">${book.getPublishing_date()}</td>
 						<td width="50">${book.getBook_image()}</td>
 						<td width="50">${book.getDiscount_rate()}</td>
-						<td width="50"><fmt:formatDate pattern="yyyy-MM-dd" value="${book.getReg_date()}"/></td>
+						<td width="50"><fmt:formatDate pattern="yyyy-MM-dd"
+								value="${book.getReg_date()}" /></td>
 						<td width="50">
-						<button id="edit" name="${book.getBook_id()},${book.getBook_kind()}" 
-						onclick="edit(this)">수정</button></td>
+							<button id="edit"
+								name="${book.getBook_id()},${book.getBook_kind()}"
+								onclick="edit(this)">수정</button>
+						</td>
 						<td width="50">
-						<button id="delete" name="${book.getBook_id()},${book.getBook_kind()}"
-						onclick="del(this)">삭제</button></td>
-						</tr>
+							<button id="delete"
+								name="${book.getBook_id()},${book.getBook_kind()}"
+								onclick="del(this)">삭제</button>
+						</td>
+					</tr>
 				</c:forEach>
 			</table>
 		</c:if>

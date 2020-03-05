@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="/shoppingmall/css/style.css/">
 <script src="/shoppingmall/js/jquery-1.11.0.min.js"></script>
 <script src="/shoppingmall/js/jquery.form.min.js"></script>
 <script src="/shoppingmall/mngr/productProcess/bookregist.js"></script>
-<meta charset="UTF-8">
 </head>
 <body>
 	<c:if test="${empty sessionScope.id}">
@@ -25,8 +25,8 @@
 		method="post" enctype="multipart/form-data">
 		<div id="bookRegistForm" class="box">
 			<ul>
-				<li><label for="book_kind">분류선택</label> <select id="book_kind"
-					name="book_kind">
+				<li><label for="book_kind">분류선택</label> 
+				<select id="book_kind" name="book_kind">
 						<option value="100">문학</option>
 						<option value="200">외국어</option>
 						<option value="300">컴퓨터</option>

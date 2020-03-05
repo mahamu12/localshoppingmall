@@ -9,8 +9,8 @@ public class QnaDataBean {
 	private String qna_writer; // qna 작성자
 	private String qna_content; // qna 내용
 	private int group_id; // qna 그룹
-	private byte qora; // qna 그룹 내의 순서
-	private byte reply; // 답변 여부
+	private int qora; // qna 그룹 내의 순서
+	private int reply; // 답변 여부
 	private Timestamp reg_date; // qna 작성일
 
 	public int getQna_id() {
@@ -61,19 +61,19 @@ public class QnaDataBean {
 		this.group_id = group_id;
 	}
 
-	public byte getQora() {
+	public int getQora() {
 		return qora;
 	}
 
-	public void setQora(byte qora) {
+	public void setQora(int qora) {
 		this.qora = qora;
 	}
 
-	public byte getReply() {
+	public int getReply() {
 		return reply;
 	}
 
-	public void setReply(byte reply) {
+	public void setReply(int reply) {
 		this.reply = reply;
 	}
 

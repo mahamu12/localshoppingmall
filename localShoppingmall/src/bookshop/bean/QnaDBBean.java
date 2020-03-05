@@ -51,7 +51,7 @@ public class QnaDBBean {
 			if (x > 0)
 				group_id = rs.getInt(1) + 1;
 
-			// 쿼리를 작성 : board 테이블에 새로운 레코드 추가
+			// 쿼리를 작성 : qna 테이블에 새로운 레코드 추가
 			sql = "insert into qna(qna_id,book_id,book_title,qna_writer,qna_content, ";
 			sql += "group_id,qora,reply,reg_date) values(qna_seq.nextVal,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class QnaDBBean {
 		try {
 			conn = getConnection();
 
-			// 쿼리를 작성 : board 테이블에 새로운 레코드 추가
+			// 쿼리를 작성 : qna 테이블에 새로운 레코드 추가
 			sql = "insert into qna(qna_id,book_id,book_title,qna_writer,qna_content, ";
 			sql += "group_id,qora,reply,reg_date) values(qna_seq.nextVal,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
@@ -240,8 +240,8 @@ public class QnaDBBean {
 					article.setQna_writer(rs.getString("qna_writer"));
 					article.setQna_content(rs.getString("qna_content"));
 					article.setGroup_id(rs.getInt("group_id"));
-					article.setQora(rs.getByte("qora"));
-					article.setReply(rs.getByte("reply"));
+					article.setQora(rs.getInt("qora"));
+					article.setReply(rs.getInt("reply"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 
 					// List 객체에 데이터 저장빈인 BoardDataBean 객체를 저장
@@ -294,8 +294,8 @@ public class QnaDBBean {
 					article.setQna_writer(rs.getString("qna_writer"));
 					article.setQna_content(rs.getString("qna_content"));
 					article.setGroup_id(rs.getInt("group_id"));
-					article.setQora(rs.getByte("qora"));
-					article.setReply(rs.getByte("reply"));
+					article.setQora(rs.getInt("qora"));
+					article.setReply(rs.getInt("reply"));
 					article.setReg_date(rs.getTimestamp("reg_date"));
 
 					// List 객체에 데이터 저장빈인 BoardDataBean 객체를 저장
@@ -345,8 +345,8 @@ public class QnaDBBean {
 				article.setQna_writer(rs.getString("qna_writer"));
 				article.setQna_content(rs.getString("qna_content"));
 				article.setGroup_id(rs.getInt("group_id"));
-				article.setQora(rs.getByte("qora"));
-				article.setReply(rs.getByte("reply"));
+				article.setQora(rs.getInt("qora"));
+				article.setReply(rs.getInt("reply"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 			}
 		} catch (Exception ex) {

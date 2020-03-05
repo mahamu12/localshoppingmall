@@ -39,7 +39,7 @@ public class MngrDBBean {
 		int x = -1;
 
 		try {
-
+			conn = getConnection();
 			pstmt = conn.prepareStatement("select managerPasswd from manager where managerId = ?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -128,7 +128,7 @@ public class MngrDBBean {
 			conn = getConnection();
 
 			String sql = "select book_title from book";
-			sql += "where book_kind = ? and book tatle = ? and author = ?";
+			sql += "where book_kind = ? and book title = ? and author = ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kind);
@@ -137,9 +137,9 @@ public class MngrDBBean {
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // 해당 책이 이미 등록되어 있음.
+				x = 1; // 해당 책이 이미 등록되어 있음
 			else
-				x = -1; // 해당 책이 아직 등록되어 있지 않음.
+				x = -1; // 해당 책이 아직 등록되어 있지 않음
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -248,7 +248,7 @@ public class MngrDBBean {
 		try {
 			conn = getConnection();
 
-			pstmt = conn.prepareStatement("select book_title from book where book_id=" + book_id);
+			pstmt = conn.prepareStatement("select book_title from book where book_id = " + book_id);
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
@@ -286,7 +286,7 @@ public class MngrDBBean {
 
 			String sql1 = "select * from book";
 			String sql2 = "select * from book";
-			sql2 += "where book_kind =? order by reg_date desc";
+			sql2 += "where book_kind = ? order by reg_date desc";
 
 			if (book_kind.equals("all") || book_kind.equals("")) {
 				pstmt = conn.prepareStatement(sql1);
@@ -349,8 +349,8 @@ public class MngrDBBean {
 		try {
 			conn = getConnection();
 
-			String sql = "select * from book where book_kind=?";
-			sql += "order by reg_date desc limit";
+			String sql = "select * from book where book_kind = ? ";
+			sql += "order by reg_date desc";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book_kind);
@@ -369,7 +369,7 @@ public class MngrDBBean {
 					book.setPublishing_com(rs.getString("publishing_com"));
 					book.setPublishing_date(rs.getString("publishing_date"));
 					book.setBook_image(rs.getString("book_image"));
-					book.setDiscount_rate(rs.getInt("discount rate"));
+					book.setDiscount_rate(rs.getInt("discount_rate"));
 					book.setReg_date(rs.getTimestamp("reg_date"));
 
 					bookList[i] = book;
@@ -410,7 +410,7 @@ public class MngrDBBean {
 		try {
 			conn = getConnection();
 
-			pstmt = conn.prepareStatement("select * from book where book_id=?");
+			pstmt = conn.prepareStatement("select * from book where book_id = ? ");
 			pstmt.setInt(1, bookId);
 
 			rs = pstmt.executeQuery();
@@ -463,7 +463,7 @@ public class MngrDBBean {
 			sql = "update book set book_kind =?,book_title=?,book_price=?";
 			sql += ",book_count=?,author=?,publishing_com=?,publishing_date=?";
 			sql += ",book_image=?,book_content=?,discount_rate=?";
-			sql += "where book_id=?";
+			sql += " where book_id=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -510,6 +510,7 @@ public class MngrDBBean {
 			pstmt.setInt(1, bookId);
 
 			pstmt.executeUpdate();
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
