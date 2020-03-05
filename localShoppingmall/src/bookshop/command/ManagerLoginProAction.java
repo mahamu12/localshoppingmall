@@ -3,6 +3,8 @@ package bookshop.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bookshop.bean.MngrDBBean;
+
 public class ManagerLoginProAction implements CommandAction{
 
 	@Override

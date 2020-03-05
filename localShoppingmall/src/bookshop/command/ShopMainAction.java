@@ -1,7 +1,13 @@
 package bookshop.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import bookshop.bean.MngrDBBean;
+import bookshop.bean.MngrDataBean;
 
 public class ShopMainAction implements CommandAction {
 
