@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/shoppingmall/css/style.css"/>
 <script src="/shoppingmall/js/jquery-1.11.0.min.js"></script>
-<script src="/shoppingmall/mngr.managermain.js"></script>
+<script src="/shoppingmall/mngr/managermain.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.id}">
